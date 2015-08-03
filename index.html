@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Animate Hanoi</title>
+        <script type="text/javascript" src="hanoi.js"></script>
+        <link href="style.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <h1>Animate Hanoi!</h1>
+        <div id="config">
+            <label for="towerHeight">tower height: </label>
+            <input type="text" id="towerHeight" value="3"/>
+            <button type="button" id="build">Build</button>
+        </div>
+        <div id="mainScreen" class="flex">
+            <div id="towerA" class="tower">
+                <div id="disc4" class="disc">4</div>
+                <div id="disc5" class="disc">5</div>
+                <div id="disc6" class="disc">6</div>
+                <div id="disc7" class="disc">7</div>
+                <div id="disc8" class="disc">8</div>
+                <div id="disc9" class="disc">9</div>
+            </div>
+            <div id="towerB" class="tower monospaceBlock__element">
+                <div id="disc1" class="disc">1</div>
+                <div id="disc2" class="disc">2</div>
+            </div>
+            <div id="towerC" class="tower monospaceBlock__element">
+                <div id="disc3" class="disc">3</div>
+            </div>
+        </div>
+        <div id="player">
+            <button type="button" id="play" value="play">Play</button>
+            <button type="button" id="stop" value="stop">Stop</button>
+            <button type="button" id="next" value="next">Next</button>
+            <button type="button" id="reset" value="reset">Reset</button>
+        </div>
+    </body>
+</html>

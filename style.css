@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+#config {
+    background-color: green;
+    text-align: center;
+}
+#mainScreen {
+    flex: 1;
+    display: flex;
+}
+.tower {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 1;
+}
+.disc {
+    margin: 0 auto;
+    border-radius: 25%;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+}
+#player {
+    background-color: green;
+    text-align: center;
+}
+
+#disc1 {
+    width:3rem;
+    background-color: red;
+}
+#disc2 {
+    width:4rem;
+    background-color: blue;
+}
+#disc3 {
+    width:5rem;
+    background-color: yellow;
+}
+#disc4 {
+    width:6rem;
+    background-color: red;
+}
+#disc5 {
+    width:6.5rem;
+    background-color: blue;
+}
+#disc6 {
+    width:7rem;
+    background-color: yellow;
+}
+#disc7 {
+    width:7.5rem;;
+    background-color: red;
+}
+#disc8 {
+    width:8rem;
+    background-color: blue;
+}
+#disc9 {
+    width:8.25rem;
+    background-color: yellow;
+}
