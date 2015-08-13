@@ -4,4 +4,20 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-g	hanoi.js	/^var g = generator();$/;"	v
+Disc	hanoi.js	/^var Disc = function(number) {$/;"	c
+Disc.changePosition	hanoi.js	/^Disc.prototype.changePosition = function(position) {$/;"	m
+Disc.initializePosition	hanoi.js	/^Disc.prototype.initializePosition = function() {$/;"	m
+Hanoi	hanoi.js	/^var Hanoi = function(size) {$/;"	c
+Hanoi.setDiscs	hanoi.js	/^Hanoi.prototype.setDiscs = function() {$/;"	m
+build	hanoi.js	/^function build() {$/;"	f
+clear	hanoi.js	/^function clear() {$/;"	f
+count	hanoi.js	/^var count = 1;$/;"	v
+getDiscNumberToMove	hanoi.js	/^function getDiscNumberToMove(count) {$/;"	f
+getMoveDirection	hanoi.js	/^function getMoveDirection(size, discNumber) {$/;"	f
+hanoi	hanoi.js	/^var hanoi;$/;"	v
+initialize	hanoi.js	/^function initialize() {$/;"	f
+iterator	hanoi.js	/^var iterator;$/;"	v
+moveDisc	hanoi.js	/^function moveDisc(hanoi, direction, discNumber) {$/;"	f
+next	hanoi.js	/^function next() {$/;"	f
+positions	hanoi.js	/^var positions = ["A", "B", "C"];$/;"	v
+reset	hanoi.js	/^function reset() {$/;"	f

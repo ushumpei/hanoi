@@ -6,6 +6,9 @@ body {
     background-color: green;
     text-align: center;
 }
+#config label {
+    color: white;
+}
 #mainScreen {
     flex: 1;
     display: flex;
@@ -27,41 +30,4 @@ body {
 #player {
     background-color: green;
     text-align: center;
-}
-
-#disc1 {
-    width:3rem;
-    background-color: red;
-}
-#disc2 {
-    width:4rem;
-    background-color: blue;
-}
-#disc3 {
-    width:5rem;
-    background-color: yellow;
-}
-#disc4 {
-    width:6rem;
-    background-color: red;
-}
-#disc5 {
-    width:6.5rem;
-    background-color: blue;
-}
-#disc6 {
-    width:7rem;
-    background-color: yellow;
-}
-#disc7 {
-    width:7.5rem;;
-    background-color: red;
-}
-#disc8 {
-    width:8rem;
-    background-color: blue;
-}
-#disc9 {
-    width:8.25rem;
-    background-color: yellow;
 }

@@ -1,12 +1,16 @@
 var hanoi;
 var iterator;
 var count = 1;
+var positions = ["A", "B", "C"];
+var colors =["red", "blue", "yellow", "green"];
+var firstTerm = 3;
+var ratio = 4/5;
+var stopButton = false;
 
 var Hanoi = function(size) {
     this.size = size;
     this.discs = this.setDiscs();
 }
-
 Hanoi.prototype.setDiscs = function() {
     clear();
     var discs = new Array();
@@ -26,9 +30,18 @@ Disc.prototype.initializePosition = function() {
     var position = this.position;
     var label = this.number + 1;
     var disc = document.createElement("div");
+
+    var backgroundColor = colors[this.number % colors.length];
+    var width = firstTerm;
+    for (var i = 0; i < this.number; i++) {
+        width += Math.pow(ratio, i);
+    }
+
     disc.innerText = label;
     disc.setAttribute("class", "disc");
     disc.setAttribute("id", "disc" + label);
+    disc.style.backgroundColor = backgroundColor;
+    disc.style.width = width + "rem";
     var Tower = document.getElementById("tower" + positions[position]);
     Tower.appendChild(disc);
 }
@@ -57,7 +70,7 @@ function getMoveDirection(size, discNumber) {
     return Math.pow(-1,1+size+discNumber+1);
 }
 
-function moveDisc(hanoi, direction, discNumber) {
+function rotateDisc(hanoi, direction, discNumber) {
     var disc = hanoi.discs[discNumber];
     var position = disc.position;
     var newPosition = position + direction;
@@ -70,18 +83,13 @@ function moveDisc(hanoi, direction, discNumber) {
     disc.changePosition(newPosition);
 }
 
-var positions = ["A", "B", "C"];
-
-function* solve(hanoi) {
-    var size = hanoi.size;
-    while(count < Math.pow(2,size) + 2) {
+function solve(hanoi) {
         var discNumber = getDiscNumberToMove(count);
-        var direction = getMoveDirection(size, discNumber);
-        moveDisc(hanoi, direction, discNumber);
+        var direction = getMoveDirection(hanoi.size, discNumber);
+        rotateDisc(hanoi, direction, discNumber);
         count++;
-        yield;
-    }
 }
+
 function initialize() {
     build();
 }
@@ -96,13 +104,30 @@ function build() {
     var size = Number(document.getElementById("towerSize").value);
     count = 1;
     hanoi = new Hanoi(size);
-    iterator = solve(hanoi);
+    stop();
+    play();
 }
+
 function reset() {
     clear();
     build();
 }
 
+function play() {
+    if(!stopButton && (count < Math.pow(2, hanoi.size))) {
+        solve(hanoi);
+        setTimeout(play, 500);
+    }
+}
+
+function stop() {
+    stopButton = true;
+}
 function next() {
-    iterator.next();
+    solve(hanoi);
+}
+
+function start() {
+    stopButton = false;
+    play();
 }

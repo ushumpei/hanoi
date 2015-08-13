@@ -8,7 +8,7 @@
         <h1 id="tagline">Animate Tower of Hanoi</h1>
         <div id="config">
             <label for="towerHeight">tower size: </label>
-            <input type="number" id="towerSize" value="4"/>
+            <input type="number" id="towerSize" value="10"/>
             <button type="button" id="build" onclick="build();">Build</button>
         </div>
         <div id="mainScreen" class="flex">
@@ -20,10 +20,10 @@
             </div>
         </div>
         <div id="player">
-            <button type="button" id="play" value="play">Play</button>
-            <button type="button" id="stop" value="stop">Stop</button>
-            <button type="button" id="next" value="next" onclick="next();">Advance</button>
-            <button type="button" id="reset" value="reset" onclick="reset();">Reset</button>
+            <button type="button" id="play" onclick="start();">Start</button>
+            <button type="button" id="stop" onclick="stop();">Stop</button>
+            <button type="button" id="next" onclick="next();">Next</button>
+            <button type="button" id="reset" onclick="reset();">Reset</button>
         </div>
     </body>
 </html>
