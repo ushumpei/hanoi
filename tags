@@ -4,20 +4,28 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Disc	hanoi.js	/^var Disc = function(number) {$/;"	c
-Disc.changePosition	hanoi.js	/^Disc.prototype.changePosition = function(position) {$/;"	m
-Disc.initializePosition	hanoi.js	/^Disc.prototype.initializePosition = function() {$/;"	m
-Hanoi	hanoi.js	/^var Hanoi = function(size) {$/;"	c
-Hanoi.setDiscs	hanoi.js	/^Hanoi.prototype.setDiscs = function() {$/;"	m
-build	hanoi.js	/^function build() {$/;"	f
-clear	hanoi.js	/^function clear() {$/;"	f
-count	hanoi.js	/^var count = 1;$/;"	v
-getDiscNumberToMove	hanoi.js	/^function getDiscNumberToMove(count) {$/;"	f
-getMoveDirection	hanoi.js	/^function getMoveDirection(size, discNumber) {$/;"	f
-hanoi	hanoi.js	/^var hanoi;$/;"	v
-initialize	hanoi.js	/^function initialize() {$/;"	f
-iterator	hanoi.js	/^var iterator;$/;"	v
-moveDisc	hanoi.js	/^function moveDisc(hanoi, direction, discNumber) {$/;"	f
-next	hanoi.js	/^function next() {$/;"	f
-positions	hanoi.js	/^var positions = ["A", "B", "C"];$/;"	v
-reset	hanoi.js	/^function reset() {$/;"	f
+Disc	main.js	/^var Disc = function(number) {$/;"	c
+Disc.changePosition	main.js	/^Disc.prototype.changePosition = function(position) {$/;"	m
+Disc.initializePosition	main.js	/^Disc.prototype.initializePosition = function() {$/;"	m
+Hanoi	main.js	/^var Hanoi = function(size) {$/;"	c
+Hanoi.setDiscs	main.js	/^Hanoi.prototype.setDiscs = function() {$/;"	m
+build	main.js	/^function build() {$/;"	f
+clear	main.js	/^function clear() {$/;"	f
+colors	main.js	/^var colors =["red", "blue", "yellow", "green"];$/;"	v
+count	main.js	/^var count = 1;$/;"	v
+firstTerm	main.js	/^var firstTerm = 3;$/;"	v
+getDiscNumberToMove	main.js	/^function getDiscNumberToMove(count) {$/;"	f
+getMoveDirection	main.js	/^function getMoveDirection(size, discNumber) {$/;"	f
+hanoi	main.js	/^var hanoi;$/;"	v
+initialize	main.js	/^function initialize() {$/;"	f
+iterator	main.js	/^var iterator;$/;"	v
+next	main.js	/^function next() {$/;"	f
+play	main.js	/^function play() {$/;"	f
+positions	main.js	/^var positions = ["A", "B", "C"];$/;"	v
+ratio	main.js	/^var ratio = 4\/5;$/;"	v
+reset	main.js	/^function reset() {$/;"	f
+rotateDisc	main.js	/^function rotateDisc(hanoi, direction, discNumber) {$/;"	f
+solve	main.js	/^function solve(hanoi) {$/;"	f
+start	main.js	/^function start() {$/;"	f
+stop	main.js	/^function stop() {$/;"	f
+stopButton	main.js	/^var stopButton = false;$/;"	v
