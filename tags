@@ -11,7 +11,6 @@ Hanoi	main.js	/^var Hanoi = function(size) {$/;"	c
 Hanoi.setDiscs	main.js	/^Hanoi.prototype.setDiscs = function() {$/;"	m
 build	main.js	/^function build() {$/;"	f
 clear	main.js	/^function clear() {$/;"	f
-colors	main.js	/^var colors =["red", "blue", "yellow", "green"];$/;"	v
 count	main.js	/^var count = 1;$/;"	v
 firstTerm	main.js	/^var firstTerm = 3;$/;"	v
 getDiscNumberToMove	main.js	/^function getDiscNumberToMove(count) {$/;"	f

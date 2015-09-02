@@ -2,7 +2,6 @@ var hanoi;
 var iterator;
 var count = 1;
 var positions = ["A", "B", "C"];
-var colors =["red", "blue", "yellow", "green"];
 var firstTerm = 3;
 var ratio = 4/5;
 var stopButton = false;
@@ -31,7 +30,6 @@ Disc.prototype.initializePosition = function() {
     var label = this.number + 1;
     var disc = document.createElement("div");
 
-    var backgroundColor = colors[this.number % colors.length];
     var width = firstTerm;
     for (var i = 0; i < this.number; i++) {
         width += Math.pow(ratio, i);
@@ -40,7 +38,6 @@ Disc.prototype.initializePosition = function() {
     disc.innerText = label;
     disc.setAttribute("class", "disc");
     disc.setAttribute("id", "disc" + label);
-    disc.style.backgroundColor = backgroundColor;
     disc.style.width = width + "rem";
     var Tower = document.getElementById("tower" + positions[position]);
     Tower.appendChild(disc);
