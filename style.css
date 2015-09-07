@@ -1,33 +1,43 @@
 body {
     display: flex;
     flex-direction: column;
+    background-color: gray;
 }
-#config {
-    background-color: green;
-    text-align: center;
-}
-#config label {
-    color: white;
+#subScreen {
+    border: dotted 0.5rem black;
 }
 #mainScreen {
     flex: 1;
     display: flex;
 }
+#player {
+    height: 2rem;
+    line-height: 2rem;
+    background-color: black;
+    text-align: center;
+}
+#player label {
+    color: white;
+}
+
+#towerSize {
+    width: 3rem;
+}
+#measure {
+    color: white;
+}
 .tower {
+    flex: 1;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-end;
-    flex: 1;
 }
 .disc {
     margin: 0 auto;
-    border-radius: 25%;
-    height: 2rem;
-    line-height: 2rem;
+    height: 1rem;
+    line-height: 1rem;
     text-align: center;
-}
-#player {
-    background-color: green;
-    text-align: center;
+    color: white;
+    background-color: black;
 }

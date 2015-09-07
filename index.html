@@ -1,28 +1,27 @@
 <html>
     <head>
-        <title>Animate Tower of Hanoi</title>
+        <title>Tower of Hanoi</title>
         <script type="text/javascript" src="main.js"></script>
         <link href="style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <body onload="initialize();">
-        <h1 id="tagline">Animate Tower of Hanoi</h1>
-        <div id="config">
-            <label for="towerHeight">tower size: </label>
-            <input type="number" id="towerSize" value="10"/>
-            <button type="button" id="build" onclick="build();">Build</button>
+    <body onload="build();">
+        <div id="subScreen">
+            <span id="measure"><span id="count">0</span>/<span id="limit"></span></span>
         </div>
-        <div id="mainScreen" class="flex">
-            <div id="towerA" class="tower">
+        <div id="mainScreen">
+            <div id="tower0" class="tower">
             </div>
-            <div id="towerB" class="tower">
+            <div id="tower1" class="tower">
             </div>
-            <div id="towerC" class="tower">
+            <div id="tower2" class="tower">
             </div>
         </div>
         <div id="player">
-            <button type="button" id="play" onclick="start();">Start</button>
-            <button type="button" id="stop" onclick="stop();">Stop</button>
+            <label for="towerHeight">tower size:&nbsp;</label>
+            <input type="number" id="towerSize" value="4"/>
+            <button type="button" id="build" onclick="build();">Build</button>
             <button type="button" id="next" onclick="next();">Next</button>
+            <button type="button" id="back" onclick="back();">Back</button>
             <button type="button" id="reset" onclick="reset();">Reset</button>
         </div>
     </body>

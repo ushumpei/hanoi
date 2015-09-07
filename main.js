@@ -1,133 +1,127 @@
-var hanoi;
-var iterator;
-var count = 1;
-var positions = ["A", "B", "C"];
-var colors =["red", "blue", "yellow", "green"];
-var firstTerm = 3;
-var ratio = 4/5;
-var stopButton = false;
-
-var Hanoi = function(size) {
-    this.size = size;
-    this.discs = this.setDiscs();
+/* Logic */
+// snapshotは[1's posision, 2's posision, .. , length's posision]のように,
+// 各大きさのディスクがどこにあるかを表現している.
+function click(size, count, direction) {
+    return getSnapshot(size, count + direction);
 }
-Hanoi.prototype.setDiscs = function() {
-    clear();
+function getSnapshot(size, count) {
+    var snapshot = new Array();
+    for(var i = 0; i < size; i++) {
+        var discNumber = i + 1;
+        snapshot[i] = getDiscPosition(size, discNumber, count);
+    }
+    return snapshot;
+}
+function getDiscPosition(size, discNumber, count) {
+    var upperBound = Math.pow(2, discNumber - 1);
+    var range = Math.pow(2, discNumber);
+    var representative = count % (range * 3);
+    var position = 0;
+    var direction = getMoveDirection(size, discNumber);
+    if(representative < upperBound) {
+        position = 0;
+    } else if(representative < upperBound + range) {
+        position += direction * 1;
+    } else if(representative < upperBound + range * 2) {
+        position += direction * 2;
+    } else {
+        position = 0;
+    }
+    if(position < 0) {
+        position += 3;
+    }
+    return position;
+}
+// 1: 正の方向, -1: 負の方向
+function getMoveDirection(size, discNumber) {
+    return Math.pow(-1, 1 + size + discNumber);
+}
+
+/* Projection */
+function projection(towerSize, count) {
+    document.getElementById("towerSize").value = towerSize;
+    document.getElementById("count").innerText = count;
+    document.getElementById("limit").innerText = Math.pow(2, towerSize) - 1;
+    var snapshot = getSnapshot(towerSize, count);
+    replaceMainScreen(snapshot);
+}
+function replaceMainScreen(snapshot) {
+    var mainScreen = getMainScreen(snapshot);
+    var oldMainScreen = document.getElementById("mainScreen");
+    document.body.replaceChild(mainScreen, oldMainScreen);
+}
+function getMainScreen(snapshot) {
+    var mainScreen = document.createElement("div");
+    mainScreen.setAttribute("id", "mainScreen");
+    var towers = getTowers(snapshot);
+    for (var i = 0; i < 3; i++) {
+        mainScreen.appendChild(towers[i]);
+    }
+    return mainScreen;
+}
+function getTowers(snapshot) {
+    var towers = new Array();
+    for (var i = 0; i < 3; i++) {
+        var towerNumber = i;
+        var tower = document.createElement("div");
+        tower.setAttribute("class", "tower");
+        tower.setAttribute("id", "tower" + towerNumber);
+        var discs = getDiscs(snapshot, towerNumber);
+        for (var j = 0; j < discs.length; j++) {
+            tower.appendChild(discs[j]);
+        }
+        towers.push(tower);
+    }
+    return towers;
+}
+function getDiscs(snapshot, towerNumber) {
     var discs = new Array();
-    for (var i = 0; i < this.size; i++) {
-        var disc = new Disc(i);
-        discs.push(disc);
-        disc.initializePosition();
+    for (var i = 0; i < snapshot.length; i++) {
+        if(snapshot[i] == towerNumber) {
+            var discNumber = i;
+            var disc = document.createElement("div");
+            disc.innerText = discNumber + 1;
+            disc.setAttribute("style", difineDiscStyle(discNumber, towerNumber));
+            disc.setAttribute("class", "disc");
+            discs.push(disc);
+        }
     }
     return discs;
 }
-
-var Disc = function(number) {
-    this.number = number;
-    this.position = 0;
-}
-Disc.prototype.initializePosition = function() {
-    var position = this.position;
-    var label = this.number + 1;
-    var disc = document.createElement("div");
-
-    var backgroundColor = colors[this.number % colors.length];
-    var width = firstTerm;
-    for (var i = 0; i < this.number; i++) {
-        width += Math.pow(ratio, i);
+function difineDiscStyle(discNumber, position) {
+    var width = 2;
+    for (var i = 0; i < discNumber; i++) {
+        width += Math.pow(4/5, i);
     }
-
-    disc.innerText = label;
-    disc.setAttribute("class", "disc");
-    disc.setAttribute("id", "disc" + label);
-    disc.style.backgroundColor = backgroundColor;
-    disc.style.width = width + "rem";
-    var Tower = document.getElementById("tower" + positions[position]);
-    Tower.appendChild(disc);
-}
-Disc.prototype.changePosition = function(position) {
-    var from = this.position;
-    var to   = position;
-    this.position = to;
-    var label = this.number + 1;
-    var disc = document.getElementById("disc" + label);
-    var fromTower = document.getElementById("tower" + positions[from]);
-    fromTower.removeChild(disc);
-    var toTower = document.getElementById("tower" + positions[to]);
-    toTower.insertBefore(disc, toTower.firstChild);
+    var left = 50 * position;
+    var style = 
+          "width:" + width + "rem;"
+        + "left:" + left + "%;";
+    return style;
 }
 
-function getDiscNumberToMove(count) {
-    var discNumber = 0;
-    while(count % 2 == 0) {
-        count = count / 2;
-        discNumber++;
-    }
-    return discNumber;
-}
-
-function getMoveDirection(size, discNumber) {
-    return Math.pow(-1,1+size+discNumber+1);
-}
-
-function rotateDisc(hanoi, direction, discNumber) {
-    var disc = hanoi.discs[discNumber];
-    var position = disc.position;
-    var newPosition = position + direction;
-    if (newPosition < 0) {
-        newPosition += 3;
-    }
-    if (newPosition > 2) {
-        newPosition -= 3;
-    }
-    disc.changePosition(newPosition);
-}
-
-function solve(hanoi) {
-        var discNumber = getDiscNumberToMove(count);
-        var direction = getMoveDirection(hanoi.size, discNumber);
-        rotateDisc(hanoi, direction, discNumber);
-        count++;
-}
-
-function initialize() {
-    build();
-}
-
-function clear() {
-    for (var i = 0; i < 3; i++) {
-        document.getElementById("tower" + positions[i]).innerHTML = "";
-    }
-}
-
+// Interface
 function build() {
-    var size = Number(document.getElementById("towerSize").value);
-    count = 1;
-    hanoi = new Hanoi(size);
-    stop();
-    play();
+    var towerSize = document.getElementById("towerSize").value;
+    towerSize = parseInt(towerSize);
+    projection(towerSize, 0);
 }
-
 function reset() {
-    clear();
-    build();
-}
-
-function play() {
-    if(!stopButton && (count < Math.pow(2, hanoi.size))) {
-        solve(hanoi);
-        setTimeout(play, 500);
-    }
-}
-
-function stop() {
-    stopButton = true;
+    var towerSize = document.getElementById("towerSize").value;
+    towerSize = parseInt(towerSize);
+    projection(towerSize, 0);
 }
 function next() {
-    solve(hanoi);
+    var towerSize = document.getElementById("towerSize").value;
+    var count = document.getElementById("count").innerText;
+    towerSize = parseInt(towerSize);
+    count = parseInt(count);
+    projection(towerSize, ++count);
 }
-
-function start() {
-    stopButton = false;
-    play();
+function back() {
+    var towerSize = document.getElementById("towerSize").value;
+    var count = document.getElementById("count").innerText;
+    towerSize = parseInt(towerSize);
+    count = parseInt(count);
+    projection(towerSize, --count);
 }
