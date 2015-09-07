@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    background-color: gray;
+    background: linear-gradient(to bottom, black, navy);
 }
 #subScreen {
     border: dotted 0.5rem black;
@@ -36,8 +36,8 @@ body {
 .disc {
     margin: 0 auto;
     height: 1rem;
-    line-height: 1rem;
+    line-height: 1.2rem;
     text-align: center;
-    color: white;
+    color: yellow;
     background-color: black;
 }
