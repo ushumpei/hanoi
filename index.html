@@ -4,8 +4,9 @@
         <script type="text/javascript" src="main.js"></script>
         <link href="style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <body>
+    <body onload="build();">
         <div id="subScreen">
+            <span id="measure"><span id="count">0</span>/<span id="limit"></span></span>
         </div>
         <div id="mainScreen">
             <div id="tower0" class="tower">
@@ -17,7 +18,7 @@
         </div>
         <div id="player">
             <label for="towerHeight">tower size:&nbsp;</label>
-            <input type="number" id="towerSize" value="10"/>
+            <input type="number" id="towerSize" value="4"/>
             <button type="button" id="build" onclick="build();">Build</button>
             <button type="button" id="next" onclick="next();">Next</button>
             <button type="button" id="back" onclick="back();">Back</button>

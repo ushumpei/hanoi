@@ -5,7 +5,7 @@ function click(size, count, direction) {
     return getSnapshot(size, count + direction);
 }
 function getSnapshot(size, count) {
-    var snapshot = new Array(size);
+    var snapshot = new Array();
     for(var i = 0; i < size; i++) {
         var discNumber = i + 1;
         snapshot[i] = getDiscPosition(size, discNumber, count);
@@ -34,11 +34,18 @@ function getDiscPosition(size, discNumber, count) {
 }
 // 1: 正の方向, -1: 負の方向
 function getMoveDirection(size, discNumber) {
-    return Math.pow(-1, size + discNumber + 1);
+    return Math.pow(-1, 1 + size + discNumber);
 }
 
 /* Projection */
-function projection(snapshot) {
+function projection(towerSize, count) {
+    document.getElementById("towerSize").value = towerSize;
+    document.getElementById("count").innerText = count;
+    document.getElementById("limit").innerText = Math.pow(2, towerSize) - 1;
+    var snapshot = getSnapshot(towerSize, count);
+    replaceMainScreen(snapshot);
+}
+function replaceMainScreen(snapshot) {
     var mainScreen = getMainScreen(snapshot);
     var oldMainScreen = document.getElementById("mainScreen");
     document.body.replaceChild(mainScreen, oldMainScreen);
@@ -82,9 +89,9 @@ function getDiscs(snapshot, towerNumber) {
     return discs;
 }
 function difineDiscStyle(discNumber, position) {
-    var width = 3;
+    var width = 2;
     for (var i = 0; i < discNumber; i++) {
-        width += Math.pow(ratio, i);
+        width += Math.pow(4/5, i);
     }
     var left = 50 * position;
     var style = 
@@ -95,10 +102,26 @@ function difineDiscStyle(discNumber, position) {
 
 // Interface
 function build() {
+    var towerSize = document.getElementById("towerSize").value;
+    towerSize = parseInt(towerSize);
+    projection(towerSize, 0);
 }
 function reset() {
+    var towerSize = document.getElementById("towerSize").value;
+    towerSize = parseInt(towerSize);
+    projection(towerSize, 0);
 }
 function next() {
+    var towerSize = document.getElementById("towerSize").value;
+    var count = document.getElementById("count").innerText;
+    towerSize = parseInt(towerSize);
+    count = parseInt(count);
+    projection(towerSize, ++count);
 }
 function back() {
+    var towerSize = document.getElementById("towerSize").value;
+    var count = document.getElementById("count").innerText;
+    towerSize = parseInt(towerSize);
+    count = parseInt(count);
+    projection(towerSize, --count);
 }

@@ -23,6 +23,9 @@ body {
 #towerSize {
     width: 3rem;
 }
+#measure {
+    color: white;
+}
 .tower {
     flex: 1;
     display: flex;

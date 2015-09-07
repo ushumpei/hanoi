@@ -4,35 +4,17 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Disc	main.js	/^var Disc = function(number) {$/;"	c
-Disc.changePosition	main.js	/^Disc.prototype.changePosition = function(position) {$/;"	m
-Disc.initializePosition	main.js	/^Disc.prototype.initializePosition = function() {$/;"	m
-Hanoi	main.js	/^var Hanoi = function(size) {$/;"	c
-Hanoi.setDiscs	main.js	/^Hanoi.prototype.setDiscs = function() {$/;"	m
+back	main.js	/^function back() {$/;"	f
 build	main.js	/^function build() {$/;"	f
-clear	main.js	/^function clear() {$/;"	f
 click	main.js	/^function click(size, count, direction) {$/;"	f
-count	main.js	/^var count = 1;$/;"	v
-difineStyle	main.js	/^function difineStyle(discNumber, position) {$/;"	f
-firstTerm	main.js	/^var firstTerm = 3;$/;"	v
-getDiscNumberToMove	main.js	/^function getDiscNumberToMove(count) {$/;"	f
+difineDiscStyle	main.js	/^function difineDiscStyle(discNumber, position) {$/;"	f
 getDiscPosition	main.js	/^function getDiscPosition(size, discNumber, count) {$/;"	f
 getDiscs	main.js	/^function getDiscs(snapshot, towerNumber) {$/;"	f
 getMainScreen	main.js	/^function getMainScreen(snapshot) {$/;"	f
 getMoveDirection	main.js	/^function getMoveDirection(size, discNumber) {$/;"	f
 getSnapshot	main.js	/^function getSnapshot(size, count) {$/;"	f
 getTowers	main.js	/^function getTowers(snapshot) {$/;"	f
-hanoi	main.js	/^var hanoi;$/;"	v
-initialize	main.js	/^function initialize() {$/;"	f
-iterator	main.js	/^var iterator;$/;"	v
 next	main.js	/^function next() {$/;"	f
-play	main.js	/^function play() {$/;"	f
-positions	main.js	/^var positions = ["0", "1", "2"];$/;"	v
-projection	main.js	/^function projection(snapshot) {$/;"	f
-ratio	main.js	/^var ratio = 4\/5;$/;"	v
+projection	main.js	/^function projection(towerSize, count) {$/;"	f
+replaceMainScreen	main.js	/^function replaceMainScreen(snapshot) {$/;"	f
 reset	main.js	/^function reset() {$/;"	f
-rotateDisc	main.js	/^function rotateDisc(hanoi, direction, discNumber) {$/;"	f
-solve	main.js	/^function solve(hanoi) {$/;"	f
-start	main.js	/^function start() {$/;"	f
-stop	main.js	/^function stop() {$/;"	f
-stopButton	main.js	/^var stopButton = false;$/;"	v
