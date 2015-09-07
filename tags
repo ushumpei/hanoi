@@ -13,8 +13,10 @@ build	main.js	/^function build() {$/;"	f
 clear	main.js	/^function clear() {$/;"	f
 click	main.js	/^function click(size, count, direction) {$/;"	f
 count	main.js	/^var count = 1;$/;"	v
+difineStyle	main.js	/^function difineStyle(discNumber, position) {$/;"	f
 firstTerm	main.js	/^var firstTerm = 3;$/;"	v
 getDiscNumberToMove	main.js	/^function getDiscNumberToMove(count) {$/;"	f
+getDiscPosition	main.js	/^function getDiscPosition(size, discNumber, count) {$/;"	f
 getMoveDirection	main.js	/^function getMoveDirection(size, discNumber) {$/;"	f
 getSnapshot	main.js	/^function getSnapshot(size, count) {$/;"	f
 hanoi	main.js	/^var hanoi;$/;"	v
@@ -23,10 +25,11 @@ iterator	main.js	/^var iterator;$/;"	v
 next	main.js	/^function next() {$/;"	f
 play	main.js	/^function play() {$/;"	f
 positions	main.js	/^var positions = ["A", "B", "C"];$/;"	v
-projection	main.js	/^function projection(snapshot) {}$/;"	f
+projection	main.js	/^function projection(snapshot) {$/;"	f
 ratio	main.js	/^var ratio = 4\/5;$/;"	v
 reset	main.js	/^function reset() {$/;"	f
 rotateDisc	main.js	/^function rotateDisc(hanoi, direction, discNumber) {$/;"	f
+setupDisc	main.js	/^function setupDisc(discNumber, position) {$/;"	f
 solve	main.js	/^function solve(hanoi) {$/;"	f
 start	main.js	/^function start() {$/;"	f
 stop	main.js	/^function stop() {$/;"	f

@@ -1,7 +1,7 @@
 var hanoi;
 var iterator;
 var count = 1;
-var positions = ["A", "B", "C"];
+var positions = ["0", "1", "2"];
 var firstTerm = 3;
 var ratio = 4/5;
 var stopButton = false;
@@ -49,32 +49,57 @@ function getDiscPosition(size, discNumber, count) {
 function getMoveDirection(size, discNumber) {
     return Math.pow(-1, size + discNumber + 1);
 }
+
 /* Projection */
 function projection(snapshot) {
+    var mainScreen = getMainScreen(snapshot);
+    var oldMainScreen = document.getElementById("mainScreen");
+    document.body.replaceChild(mainScreen, oldMainScreen);
+}
+function getMainScreen(snapshot) {
     var mainScreen = document.createElement("div");
-    for (var i = 0; i < snapshot.length; i++) {
-        var position = snapshot[i];
-        var disc = setupDisc(i + 1, position);
-        mainScreen.appendChild(disc);
+    mainScreen.setAttribute("id", "mainScreen");
+    var towers = getTowers(snapshot);
+    for (var i = 0; i < 3; i++) {
+        mainScreen.appendChild(towers[i]);
     }
     return mainScreen;
 }
-
-function setupDisc(discNumber, position) {
-    var disc = document.createElement("div");
-    disc.innerText = discNumber;
-    disc.setAttribute("style", difineStyle(discNumber, position));
-    disc.setAttribute("class", "disc");
-    return disc;
+function getTowers(snapshot) {
+    var towers = new Array();
+    for (var i = 0; i < 3; i++) {
+        var towerNumber = i;
+        var tower = document.createElement("div");
+        tower.setAttribute("class", "tower");
+        tower.setAttribute("id", "tower" + towerNumber);
+        var discs = getDiscs(snapshot, towerNumber);
+        for (var j = 0; j < discs.length; j++) {
+            tower.appendChild(discs[j]);
+        }
+        towers.push(tower);
+    }
+    return towers;
+}
+function getDiscs(snapshot, towerNumber) {
+    var discs = new Array();
+    for (var i = 0; i < snapshot.length; i++) {
+        if(snapshot[i] == towerNumber) {
+            var discNumber = i;
+            var disc = document.createElement("div");
+            disc.innerText = discNumber + 1;
+            disc.setAttribute("style", difineStyle(discNumber, towerNumber));
+            disc.setAttribute("class", "disc");
+            discs.push(disc);
+        }
+    }
+    return discs;
 }
 function difineStyle(discNumber, position) {
     var width = 3;
     for (var i = 0; i < discNumber; i++) {
         width += Math.pow(ratio, i);
     }
-
     var left = 50 * position;
-
     var style = 
           "width:" + width + "rem;"
         + "left:" + left + "%;";
