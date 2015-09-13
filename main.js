@@ -13,16 +13,16 @@ function getSnapshot(size, count) {
     return snapshot;
 }
 function getDiscPosition(size, discNumber, count) {
-    var upperBound = Math.pow(2, discNumber - 1);
+    var lowerBound = Math.pow(2, discNumber - 1);
     var range = Math.pow(2, discNumber);
     var representative = count % (range * 3);
     var position = 0;
     var direction = getMoveDirection(size, discNumber);
-    if(representative < upperBound) {
+    if(representative < lowerBound) {
         position = 0;
-    } else if(representative < upperBound + range) {
+    } else if(representative < lowerBound + range) {
         position += direction * 1;
-    } else if(representative < upperBound + range * 2) {
+    } else if(representative < lowerBound + range * 2) {
         position += direction * 2;
     } else {
         position = 0;
@@ -44,6 +44,7 @@ function projection(towerSize, count) {
     document.getElementById("limit").innerText = Math.pow(2, towerSize) - 1;
     var snapshot = getSnapshot(towerSize, count);
     replaceMainScreen(snapshot);
+    rotateDiscs(snapshot);
 }
 function replaceMainScreen(snapshot) {
     var mainScreen = getMainScreen(snapshot);
@@ -99,10 +100,36 @@ function difineDiscStyle(discNumber, position) {
         + "left:" + left + "%;";
     return style;
 }
+// Canvas
+function rotateDiscs(snapshot) {
+    var canvas = document.getElementById("subScreen");
+    var centerX = canvas.width / 2;
+    var centerY = canvas.height / 3;
+    var context = canvas.getContext("2d");
+    context.clearRect(0,0,centerX * 2, centerY * 2);
+    // draw circls
+    for(var i = 0; i < snapshot.length; i++) {
+        context.beginPath();
+        context.strokeStyle = "gray";
+        context.lineWidth = 14;
+        context.lineCap = "round";
+        var radius = i * 15 + 15;
+        var startAngle = snapshot[i] * (2 * Math.PI) / 3;
+        var endAngle = (snapshot[i] + 1) * (2 * Math.PI) / 3;
+        context.arc(centerX, centerY, radius, startAngle, endAngle, false);
+        context.stroke();
+    }
+}
+function setCanvasSize() {
+    var canvas = document.getElementById("subScreen");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
 
 // Interface
 function build() {
     var towerSize = document.getElementById("towerSize").value;
+    setCanvasSize();
     towerSize = parseInt(towerSize);
     projection(towerSize, 0);
 }
@@ -112,6 +139,7 @@ function reset() {
     projection(towerSize, 0);
 }
 function next() {
+    setCanvasSize();
     var towerSize = document.getElementById("towerSize").value;
     var count = document.getElementById("count").innerText;
     towerSize = parseInt(towerSize);

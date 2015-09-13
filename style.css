@@ -1,16 +1,19 @@
 body {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom, black, navy);
+    background: white;
 }
 #subScreen {
-    border: dotted 0.5rem black;
+    z-index: 0;
+    position: absolute;
 }
 #mainScreen {
     flex: 1;
     display: flex;
+    z-index: 10;
 }
 #player {
+    z-index: 10;
     height: 2rem;
     line-height: 2rem;
     background-color: black;
@@ -36,8 +39,9 @@ body {
 .disc {
     margin: 0 auto;
     height: 1rem;
-    line-height: 1.2rem;
     text-align: center;
-    color: yellow;
+    color: gray;
     background-color: black;
+    border-radius: 1rem;
+    font-size: 0.5rem;
 }
