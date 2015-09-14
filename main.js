@@ -106,6 +106,7 @@ function rotateDiscs(snapshot) {
     var centerX = canvas.width / 2;
     var centerY = canvas.height / 3;
     var context = canvas.getContext("2d");
+    var angle = - (2 * Math.PI) / 3;
     context.clearRect(0,0,centerX * 2, centerY * 2);
     // draw circls
     for(var i = 0; i < snapshot.length; i++) {
@@ -114,8 +115,8 @@ function rotateDiscs(snapshot) {
         context.lineWidth = 14;
         context.lineCap = "round";
         var radius = i * 15 + 15;
-        var startAngle = snapshot[i] * (2 * Math.PI) / 3;
-        var endAngle = (snapshot[i] + 1) * (2 * Math.PI) / 3;
+        var startAngle = (snapshot[i] + 1) * angle - Math.PI / 2;
+        var endAngle = snapshot[i] * angle - Math.PI / 2;
         context.arc(centerX, centerY, radius, startAngle, endAngle, false);
         context.stroke();
     }
@@ -128,15 +129,25 @@ function setCanvasSize() {
 
 // Interface
 function build() {
-    var towerSize = document.getElementById("towerSize").value;
     setCanvasSize();
+    var towerSize = document.getElementById("towerSize").value;
     towerSize = parseInt(towerSize);
     projection(towerSize, 0);
 }
-function reset() {
+var playInterval;
+function play() {
+    var playButton = document.getElementById("play");
     var towerSize = document.getElementById("towerSize").value;
     towerSize = parseInt(towerSize);
-    projection(towerSize, 0);
+    if (playButton.value == "on") {
+        clearInterval(playInterval);
+        playButton.value = "off";
+        playButton.innerText = "Play";
+    } else {
+        playInterval = setInterval(next, 1000);
+        playButton.value = "on";
+        playButton.innerText = "Stop";
+    }
 }
 function next() {
     setCanvasSize();

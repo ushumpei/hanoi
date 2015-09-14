@@ -24,10 +24,12 @@ body {
 }
 
 #towerSize {
+    z-index: 0;
     width: 3rem;
 }
 #measure {
-    color: white;
+    text-align: right;
+    color: green;
 }
 .tower {
     flex: 1;

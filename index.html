@@ -5,6 +5,7 @@
         <link href="style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body onload="build();">
+        <span id="measure"><span id="count">0</span>/<span id="limit"></span></span>
         <canvas id="subScreen"></canvas>
         <div id="mainScreen">
             <div id="tower0" class="tower">
@@ -20,8 +21,7 @@
             <button type="button" id="build" onclick="build();">Build</button>
             <button type="button" id="next" onclick="next();">Next</button>
             <button type="button" id="back" onclick="back();">Back</button>
-            <button type="button" id="reset" onclick="reset();">Reset</button>
-            <span id="measure"><span id="count">0</span>/<span id="limit"></span></span>
+            <button type="button" id="play" onclick="play();" value="off">Play</button>
         </div>
     </body>
 </html>
