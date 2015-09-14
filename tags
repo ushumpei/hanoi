@@ -15,6 +15,9 @@ getMoveDirection	main.js	/^function getMoveDirection(size, discNumber) {$/;"	f
 getSnapshot	main.js	/^function getSnapshot(size, count) {$/;"	f
 getTowers	main.js	/^function getTowers(snapshot) {$/;"	f
 next	main.js	/^function next() {$/;"	f
+play	main.js	/^function play() {$/;"	f
+playInterval	main.js	/^var playInterval;$/;"	v
 projection	main.js	/^function projection(towerSize, count) {$/;"	f
 replaceMainScreen	main.js	/^function replaceMainScreen(snapshot) {$/;"	f
-reset	main.js	/^function reset() {$/;"	f
+rotateDiscs	main.js	/^function rotateDiscs(snapshot) {$/;"	f
+setCanvasSize	main.js	/^function setCanvasSize() {$/;"	f
